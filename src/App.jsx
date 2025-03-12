@@ -106,6 +106,7 @@ const handleUpdatePet = async (formData, petId) => {
       )}
     </>
 
-
+  ); 
+};
 
 export default App;

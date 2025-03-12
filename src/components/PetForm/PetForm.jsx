@@ -1,15 +1,20 @@
 import { useState } from 'react';
 
 const PetForm = (props) => {
-  const initialState = {
+const initialState = {
     name: '',
     age: '',
-    breed: ''
-  }
+    breed: '',
+}
 
+
+  // If pet data has been passed as props, we set formData as that pet object.
+  // Otherwise, we can assume this is a new pet form and use the empty
+  // initialState object.
   const [formData, setFormData] = useState(
     props.selected ? props.selected : initialState
   )
+
   // handleChange function to update formData state.
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -18,15 +23,17 @@ const PetForm = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (props.selected) {
+      // Don't forget to pass both formData and the ._id!
       props.handleUpdatePet(formData, props.selected._id);
     } else {
       props.handleAddPet(formData);
     }
   };
-  
+
+  // And finally, the form itself.
   return (
     <div>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <label htmlFor="name"> Name </label>
         <input
           id="name"
@@ -51,11 +58,20 @@ const PetForm = (props) => {
           onChange={handleChange}
         />
         <button type="submit">
-        {props.selected ? 'Update Pet' : 'Add New Pet'}
-          </button>
+          {props.selected ? 'Update Pet' : 'Add New Pet'}
+            </button>
       </form>
     </div>
   );
 };
 
 export default PetForm;
+
+
+
+
+
+
+
+
+
