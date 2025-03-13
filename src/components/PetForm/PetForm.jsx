@@ -23,7 +23,6 @@ const initialState = {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (props.selected) {
-      // Don't forget to pass both formData and the ._id!
       props.handleUpdatePet(formData, props.selected._id);
     } else {
       props.handleAddPet(formData);

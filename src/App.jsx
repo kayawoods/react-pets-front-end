@@ -57,6 +57,7 @@ const App = () => {
 
 // src/App.jsx
 
+
 const handleUpdatePet = async (formData, petId) => {
   try {
     const updatedPet = await petService.update(formData, petId);
@@ -67,15 +68,12 @@ const handleUpdatePet = async (formData, petId) => {
     }
 
     const updatedPetList = pets.map((pet) => (
-      // If the _id of the current pet is not the same as the updated pet's _id,
-      // return the existing pet.
-      // If the _id's match, instead return the updated pet.
-      pet._id !== updatedPet._id ? pet : updatedPet
+      
+    pet._id !== updatedPet._id ? pet : updatedPet
     ));
-    // Set pets state to this updated array
+   
     setPets(updatedPetList);
-    // If we don't set selected to the updated pet object, the details page will
-    // reference outdated data until the page reloads.
+   
     setSelected(updatedPet);
     setIsFormOpen(false);
   } catch (err) {
@@ -83,10 +81,8 @@ const handleUpdatePet = async (formData, petId) => {
   }
 };
 
-
   return (
-    // src/App.jsx
-
+  
     <>
       <PetList
         pets={pets}
